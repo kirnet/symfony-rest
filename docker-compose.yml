@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mysql:
+    image: 'mysql/mysql-server:8.0.31'
+    working_dir: /var/www
+    volumes:
+      - './data/mysql:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=symfony_rest
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - '18002:3306'
+  webserver:
+    image: 'nginx:alpine'
+    working_dir: /var/www
+    volumes:
+      - './:/var/www'
+      - './.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+    ports:
+      - '18000:80'
+  php-fpm:
+    build: .docker/php-fpm
+    working_dir: /var/www
+    volumes:
+      - './:/var/www'
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
