@@ -33,7 +33,7 @@ readonly class CreateUserCommandHandler implements CommandHandlerInterface
         );
 
         $this->userRepository->add($user);
-        $this->flusher->flush($user);
+        $this->flusher->flush();
 
         return $user->getId();
     }

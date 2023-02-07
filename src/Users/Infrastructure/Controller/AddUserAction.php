@@ -6,13 +6,11 @@ namespace App\Users\Infrastructure\Controller;
 
 use App\Users\Application\Command\CreateUser\CreateUserCommand;
 use App\Users\Application\Command\CreateUser\CreateUserCommandHandler;
-use App\Users\Infrastructure\Roles;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/api/users', methods: ['POST'])]
@@ -22,7 +20,6 @@ class AddUserAction
         private readonly SerializerInterface $serializer
     )
     {
-
     }
 
     public function __invoke(

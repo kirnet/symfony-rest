@@ -2,7 +2,6 @@
 
 namespace App\Users\Infrastructure\Console;
 
-use App\Users\Application\DTO\UserDTO;
 use App\Users\Domain\Factory\UserFactory;
 use App\Users\Domain\Repository\UserFlusherInterface;
 use App\Users\Infrastructure\Repository\UserRepository;

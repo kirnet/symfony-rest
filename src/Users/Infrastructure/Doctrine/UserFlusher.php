@@ -16,7 +16,6 @@ class UserFlusher implements UserFlusherInterface
 
     public function flush(?User $user = null): void
     {
-//        $this->em->persist($user);
         $this->em->flush();
     }
 }
